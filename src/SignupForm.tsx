@@ -16,7 +16,7 @@ const SignupSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Required"),
   lastName: Yup.string().min(2, "Too Short!").max(50, "Too Long!"),
-  email: Yup.string().email("Invalid email").required("Required"),
+  // email: Yup.string().email("Invalid email").required("Required"),
 });
 
 const SignUpForm = () => {
@@ -30,6 +30,9 @@ const SignUpForm = () => {
           LNAME: lastName,
         },
         email_address: email,
+        FNAME: firstName,
+        status: 'pending',
+
       };
 
       await axios.post('/.netlify/functions/add-email-subscriber', payload);
